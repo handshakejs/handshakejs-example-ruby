@@ -1,0 +1,18 @@
+<h1>Home</h1>
+
+<p>Login to gain access your <a href="/dashboard">dashboard</a>.</p>
+
+<p>The current session is: <%= session[:user] || "empty" %>. <% if session[:user] %><a href="/logout">logout</a><% end %></p>
+
+<script src='/javascripts/emailauth.js' 
+        data-app_name="emailauthjstest" 
+        data-root_url="https://emailauth.herokuapp.com"></script>
+
+<script>
+  emailauth.script.addEventListener('emailauth:login_confirm', function(e) {
+    console.log(e.data);
+    $.post("/login/success", {email: e.data.identity.email}, function(data) {
+      window.location.href = "/dashboard";
+    });    
+  }, false); 
+</script>

@@ -1,43 +1,30 @@
 class Application < Sinatra::Base
-  register Sinatra::ActiveRecordExtension
-  use Raven::Rack
-  
-  # enable :raise_errors
-  disable :show_exceptions
-  disable :raise_errors
-
-  configure do
-    set :database, DATABASE_URL
-    ActiveRecord::Base.logger = nil unless RACK_ENV == "development"
-  end
-
-  configure :development do
-    register Sinatra::Reloader
-  end
-
-  helpers do
-    def jsonify(*args)
-      render(:jsonify, *args)
-    end
-
-    def req_basic_auth
-      header = request.env["HTTP_AUTHORIZATION"]
-      return nil unless header
-      token   = header.split(/\s+/).pop()
-      auth    = Base64.decode64 token
-      auth.split(/:/)[0]
-    end
-  end
-
-  before do
-    response['Access-Control-Allow-Origin'] = "*"
-  end
+  enable :raise_errors
+  use Rack::Session::Cookie, :key => 'my_app_key',
+                             :path => '/',
+                             :expire_after => 14400, # In seconds
+                             :secret => 'secret_stuff'
   
   get "/" do
-    File.read(File.join('public', 'index.html'))
+    erb :index
   end
 
-  get "/exception" do
-    raise "Exception"
+  get "/logout" do
+    session[:user] = nil
+    redirect "/dashboard"
+  end
+
+  post "/login/success" do
+    session[:user] = params[:email] 
+    redirect "/dashboard"
+  end
+
+  get "/dashboard" do
+    return redirect "/" if !session[:user]
+    erb :dashboard
+  end
+
+  get "/session" do
+    session[:user]
   end
 end
