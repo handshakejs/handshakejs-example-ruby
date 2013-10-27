@@ -1,12 +1,12 @@
-# emailauth-example-ruby 
+# handshake-example-ruby 
 
-Example of using [emailauth-js](https://github.com/scottmotte/emailauth-js) with a ruby Sinatra app.
+Example of using [handshake-js](https://github.com/scottmotte/handshake-js) with a ruby Sinatra app.
 
 ## Usage
 
 ```bash
-git clone https://github.com/scottmotte/emailauth-example-ruby.git
-cd emailauth-example-ruby
+git clone https://github.com/scottmotte/handshake-example-ruby.git
+cd handshake-example-ruby
 bundle
 bundle exec foreman start
 ```

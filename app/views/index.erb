@@ -4,12 +4,12 @@
 
 <p>The current session is: <%= session[:user] || "empty" %>. <% if session[:user] %><a href="/logout">logout</a><% end %></p>
 
-<script src='/javascripts/emailauth.js' 
-        data-app_name="emailauthjstest" 
-        data-root_url="https://emailauth.herokuapp.com"></script>
+<script src='/javascripts/handshake.js' 
+        data-app_name="handshakejstest" 
+        data-root_url="https://handshake.herokuapp.com"></script>
 
 <script>
-  emailauth.script.addEventListener('emailauth:login_confirm', function(e) {
+  handshake.script.addEventListener('handshake:login_confirm', function(e) {
     console.log(e.data);
     $.post("/login/success", {email: e.data.identity.email}, function(data) {
       window.location.href = "/dashboard";
