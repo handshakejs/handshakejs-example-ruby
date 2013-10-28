@@ -5,8 +5,8 @@
 <p>The current session is: <%= session[:user] || "empty" %>. <% if session[:user] %><a href="/logout">logout</a><% end %></p>
 
 <script src='/javascripts/handshake.js' 
-        data-app_name="handshakejstest" 
-        data-root_url="https://handshake.herokuapp.com"></script>
+        data-app_name="demo" 
+        data-root_url="https://handshakejs.herokuapp.com"></script>
 
 <script>
   handshake.script.addEventListener('handshake:login_confirm', function(e) {
