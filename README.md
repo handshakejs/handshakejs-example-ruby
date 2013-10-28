@@ -2,6 +2,8 @@
 
 Example of using [handshake-js](https://github.com/scottmotte/handshake-js) with a ruby Sinatra app.
 
+You can view it in action [here](http://handshake-example-ruby.herokuapp.com/).
+
 ## Usage
 
 ```bash
