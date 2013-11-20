@@ -3,7 +3,7 @@ class Application < Sinatra::Base
   use Rack::Session::Cookie, :key => 'my_app_key',
                              :path => '/',
                              :expire_after => 14400, # In seconds
-                             :secret => 'secret_stuff'
+                             :secret => 'secret_stuff. you should change this value.'
   
   get "/" do
     erb :index
@@ -14,17 +14,13 @@ class Application < Sinatra::Base
     redirect "/dashboard"
   end
 
-  post "/login/success" do
-    session[:user] = params[:email] 
-    redirect "/dashboard"
-  end
-
   get "/dashboard" do
     return redirect "/" if !session[:user]
     erb :dashboard
   end
 
-  get "/session" do
-    session[:user]
+  post "/login/success" do
+    session[:user] = params[:email] 
+    redirect "/dashboard"
   end
 end
