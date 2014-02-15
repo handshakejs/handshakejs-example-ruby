@@ -20,7 +20,12 @@ class Application < Sinatra::Base
   end
 
   post "/login/success" do
-    session[:user] = params[:email] 
+    email   = params[:email]
+    salt    = SALT
+
+    pbkdf2  = PBKDF2.new(:password=>email, :salt=>salt, :iterations=>1000, :key_length => 16, :hash_function => "sha1")
+
+    session[:user] = params[:email] if pbkdf2.hex_string == params[:hash]
     redirect "/dashboard"
   end
 end

@@ -5,4 +5,5 @@ when "production"
 when "test"
 else  
   # defined above 
+  SALT = ENV['SALT']
 end

@@ -11,6 +11,7 @@ GEM
     kgio (2.8.1)
     method_source (0.8.2)
     multi_json (1.8.2)
+    pbkdf2 (0.1.0)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -51,6 +52,7 @@ DEPENDENCIES
   dotenv
   foreman
   json
+  pbkdf2
   pry
   racksh
   rake
