@@ -7,6 +7,8 @@ GEM
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
+    handshakejs (0.0.1)
+      pbkdf2 (= 0.1.0)
     json (1.8.1)
     kgio (2.8.1)
     method_source (0.8.2)
@@ -51,8 +53,8 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   foreman
+  handshakejs
   json
-  pbkdf2
   pry
   racksh
   rake

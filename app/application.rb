@@ -20,12 +20,11 @@ class Application < Sinatra::Base
   end
 
   post "/login/success" do
-    email   = params[:email]
-    salt    = SALT
+    Handshakejs.salt = SALT
+    result = Handshakejs.validate({email: params[:email], hash: params[:hash]})
 
-    pbkdf2  = PBKDF2.new(:password=>email, :salt=>salt, :iterations=>1000, :key_length => 16, :hash_function => "sha1")
+    session[:user] = params[:email] if result
 
-    session[:user] = params[:email] if pbkdf2.hex_string == params[:hash]
     redirect "/dashboard"
   end
 end
