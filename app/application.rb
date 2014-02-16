@@ -20,7 +20,7 @@ class Application < Sinatra::Base
   end
 
   post "/login/success" do
-    Handshakejs.salt = SALT
+    Handshakejs.salt = ENV['SALT']
     result = Handshakejs.validate({email: params[:email], hash: params[:hash]})
 
     session[:user] = params[:email] if result
