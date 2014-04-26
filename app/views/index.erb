@@ -5,7 +5,7 @@
 <p>The current session is: <%= session[:user] || "empty" %>. <% if session[:user] %><a href="/logout">logout</a><% end %></p>
 
 <script src='/javascripts/handshake.js' 
-        data-app_name="handshake-example-ruby" 
+        data-app_name="<%= @app_name %>" 
         data-root_url="https://handshakejs.herokuapp.com"></script>
 
 <script>

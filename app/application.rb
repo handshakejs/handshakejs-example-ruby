@@ -6,6 +6,7 @@ class Application < Sinatra::Base
                              :secret => 'secret_stuff. you should change this value.'
   
   get "/" do
+    @app_name = ENV['APP_NAME']
     erb :index
   end
 
