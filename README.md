@@ -1,4 +1,4 @@
-# handshakejs-example-ruby 
+# handshakejs-example-ruby
 
 Example of using [handshakejs-script](https://github.com/handshakejs/handshakejs-script) with a ruby Sinatra app.
 
@@ -11,7 +11,7 @@ Create an account at <http://handshakejs-signup.herokuapp.com/>.
 ```bash
 git clone https://github.com/handshakejs/handshakejs-example-ruby.git
 cd handshakejs-example-ruby
-cp .example.env .env
+cp .env.example .env
 ```
 
 Edit the contents of .env, then run the following.
